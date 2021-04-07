@@ -20,17 +20,15 @@ while True:
             val = ("0", legajo)
             cursor.execute(sql, val)
             connection.commit()
-            print(f"Hasta Luego! {legajo}")
+            print("LIBRE")
             cerradura = 0
             estado = 0
         else:
             if cerradura == 1 and estado != 0:
-                print("Perdon! Esta ocupado")
-                  
+                print(f"Perdon! Esta ocupado por {estado}")         
     except mysql.connector.Error as error:
             print("Failed to update record to database: {}".format(error))
     finally:
         if connection.is_connected():
             cursor.close()
             connection.close()
-            print("MySQL connection is closed")
